@@ -18,6 +18,19 @@ export default function HeroSection() {
     transition: { duration: 0.6, delay: d, ease: 'easeOut' },
   });
 
+  const socials = [
+    {
+      icon: Github,
+      href: 'https://github.com/putizahra/puti-coding2.git',
+      label: 'GitHub'
+    },
+    {
+      icon: Youtube,
+      href: 'https://www.youtube.com/',
+      label: 'YouTube'
+    }
+  ];
+
   return (
     <section
       id="home"
@@ -43,6 +56,7 @@ export default function HeroSection() {
             <motion.div {...fade(0)} className="md:col-span-5 flex justify-center md:justify-end">
               <img
                 src="/fotoputi1.jpg"
+                alt="profile"
                 className="
                   w-[240px] md:w-[300px]
                   h-[360px] md:h-[460px]
@@ -126,16 +140,18 @@ export default function HeroSection() {
 
               </motion.div>
 
-              {/* SOCIAL */}
+              {/* SOCIAL (FIXED) */}
               <motion.div {...fade(0.6)} className="mt-6 flex gap-4">
 
-                {[Github, Youtube].map((Icon, i) => (
+                {socials.map((social, i) => (
                   <a
                     key={i}
-                    href="#"
-                    className="p-3 rounded-full border border-sky-200 dark:border-sky-500/30 hover:scale-110 transition"
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full border border-sky-200 dark:border-sky-500/30 hover:scale-110 hover:shadow-[0_0_15px_rgba(56,189,248,0.35)] transition"
                   >
-                    <Icon className="w-5 h-5 text-sky-500 dark:text-sky-300" />
+                    <social.icon className="w-5 h-5 text-sky-500 dark:text-sky-300" />
                   </a>
                 ))}
 
