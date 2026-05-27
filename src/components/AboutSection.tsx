@@ -1,89 +1,165 @@
-import { motion } from 'framer-motion';
-import { Code2, Video, Coffee, Rocket } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { Sparkles, MapPin, Heart, BookOpen, Star, Smile, Compass } from 'lucide-react';
 
 export default function AboutSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const bio = [
+    {
+      icon: Sparkles,
+      title: 'Perkenalan ✨🌟',
+      content:
+        'Haii 👋 aku Puti Ferydha Zahra, pelajar MAN 1 Banda Aceh 📚. Aku pengen jadi programmer 💻 yang bisa bikin web bermanfaat 🤍.',
+    },
+    {
+      icon: MapPin,
+      title: 'Kelahiran & Impian 🌍🏡',
+      content:
+        'Aku lahir di Banda Aceh 📍 pada 20 Februari 2010 🎂. Cita-citaku jadi polwan 👮‍♀️ yang membanggakan orang tua 💙.',
+    },
+    {
+      icon: Heart,
+      title: 'Hobi 💙✨',
+      content:
+        'Aku suka masak 🍳 dan lari 🏃‍♀️. Itu bikin aku lebih semangat ⚡ dan tenang 🌤️.',
+    },
+  ];
+
+  // 🔥 STATS DIUBAH JADI BIOGRAFI
   const stats = [
-    { icon: Code2, value: '50+', label: 'Projects Selesai' },
-    { icon: Video, value: '100+', label: 'Video Konten' },
-    { icon: Coffee, value: '1000+', label: 'Cangkir Kopi' },
-    { icon: Rocket, value: '5+', label: 'Tahun Pengalaman' },
+    {
+      icon: BookOpen,
+      title: 'Cerita Hidupku 📖',
+      desc: 'Perjalanan kecil dari aku yang masih belajar sampai sekarang ✨',
+    },
+    {
+      icon: Star,
+      title: 'Mimpi & Tujuan 🌟',
+      desc: 'Aku ingin jadi polwan & programmer yang bermanfaat 💙',
+    },
+    {
+      icon: Smile,
+      title: 'Kepribadian 😊',
+      desc: 'Sederhana, suka belajar hal baru, dan mudah semangat ⚡',
+    },
+    {
+      icon: Compass,
+      title: 'Arah Hidup 🚀',
+      desc: 'Sedang membangun masa depan sedikit demi sedikit 🌤️',
+    },
   ];
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section
+      id="about"
+      className="py-16 md:py-24 bg-gradient-to-b from-sky-50 to-white dark:from-slate-950 dark:to-slate-900"
+    >
+      <div className="max-w-5xl mx-auto px-4">
+
+        {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <span className="text-primary font-medium mb-2 block">Tentang Saya</span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-            Mengenal Lebih Dekat
+          <p className="text-sky-500 dark:text-sky-300 text-sm">
+            ☁️ About Me 🌊
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-sky-700 dark:text-sky-200">
+            Know Me Better 💭
           </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        {/* GRID */}
+        <div className="grid md:grid-cols-2 gap-6 items-start">
+
+          {/* FOTO */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="flex justify-center"
           >
-            <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden glass shadow-card">
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <span className="text-8xl">👨‍💻</span>
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -right-6 p-4 glass rounded-xl shadow-card">
-                <p className="font-display font-bold text-2xl text-gradient">5+ Tahun</p>
-                <p className="text-sm text-muted-foreground">Pengalaman</p>
+            <div className="relative group">
+
+              <div className="absolute inset-0 bg-sky-300/30 blur-2xl rounded-2xl scale-105 dark:bg-sky-500/20" />
+
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border border-sky-200 dark:border-sky-700 shadow-xl">
+
+                <img
+                  src="/fotoputi2.jpg"
+                  alt="profile"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
               </div>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <h3 className="font-display text-2xl md:text-3xl font-bold">
-              Passionate Developer &amp; Creator
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Saya adalah seorang Fullstack Web Developer dengan passion yang kuat dalam menciptakan 
-              solusi digital yang inovatif. Dengan pengalaman lebih dari 5 tahun, saya telah 
-              membantu berbagai klien dan perusahaan dalam mewujudkan ide-ide mereka menjadi 
-              aplikasi web yang powerful dan user-friendly.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Selain coding, saya juga aktif sebagai Content Creator, berbagi pengetahuan 
-              tentang pemrograman dan teknologi melalui berbagai platform. Saya percaya bahwa 
-              berbagi ilmu adalah cara terbaik untuk terus belajar dan berkembang.
-            </p>
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="p-4 glass rounded-xl text-center hover:shadow-card-hover transition-shadow"
+          {/* ACCORDION + STATS */}
+          <div className="space-y-3">
+
+            {bio.map((item, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-xl border border-sky-200 dark:border-sky-700 bg-white/70 dark:bg-slate-800/50 backdrop-blur shadow-sm"
                 >
-                  <stat.icon className="h-6 w-6 text-primary mx-auto mb-2" />
-                  <p className="font-display text-2xl font-bold">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
+                  <button
+                    onClick={() =>
+                      setOpenIndex(isOpen ? null : index)
+                    }
+                    className="w-full flex items-center gap-3 p-4 text-left hover:bg-sky-100/40 dark:hover:bg-slate-700/40 transition"
+                  >
+                    <item.icon className="text-sky-500 dark:text-sky-300 w-5 h-5" />
+                    <span className="font-semibold text-sky-700 dark:text-sky-200">
+                      {item.title}
+                    </span>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="px-4 overflow-hidden"
+                      >
+                        <p className="pb-3 text-sky-600 dark:text-sky-300 text-sm leading-relaxed">
+                          {item.content}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+
+            {/* 4 BIOGRAPHY STATS */}
+            <div className="grid grid-cols-2 gap-3 pt-3">
+
+              {stats.map((s, i) => (
+                <div
+                  key={i}
+                  className="p-3 rounded-xl bg-white/60 dark:bg-slate-800/60 border border-sky-200 dark:border-sky-700 shadow-sm backdrop-blur hover:scale-[1.03] transition"
+                >
+                  <s.icon className="text-sky-500 dark:text-sky-300 w-5 h-5 mb-1" />
+                  <p className="font-semibold text-sky-700 dark:text-sky-200 text-sm">
+                    {s.title}
+                  </p>
+                  <p className="text-xs text-sky-500 dark:text-sky-300 leading-relaxed">
+                    {s.desc}
+                  </p>
+                </div>
               ))}
+
             </div>
-          </motion.div>
+
+          </div>
         </div>
       </div>
     </section>
