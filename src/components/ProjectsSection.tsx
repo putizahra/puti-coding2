@@ -71,13 +71,11 @@ export default function MoviesSection() {
       id="movies"
       className="relative py-24 overflow-hidden bg-white dark:bg-[#020617]"
     >
-      {/* LAYER BACKGROUND */}
+      {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-
         <div className="absolute w-[900px] h-[900px] bg-sky-300/20 blur-[220px] top-[-300px] left-[-300px]" />
         <div className="absolute w-[800px] h-[800px] bg-pink-400/20 blur-[200px] bottom-[-300px] right-[-300px]" />
         <div className="absolute w-[600px] h-[600px] bg-indigo-300/15 blur-[180px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-
       </div>
 
       {/* HEADER */}
@@ -109,7 +107,6 @@ export default function MoviesSection() {
                   hover:-translate-y-2 transition duration-500
                 ">
 
-                  {/* LAYER GLOW PER CARD */}
                   <div className="relative">
 
                     <div
@@ -123,11 +120,7 @@ export default function MoviesSection() {
 
                         <img
                           src={movie.image}
-                          className="
-                            w-full h-full object-cover
-                            group-hover:scale-110
-                            transition duration-500
-                          "
+                          className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                         />
 
                       </div>
@@ -135,7 +128,6 @@ export default function MoviesSection() {
 
                   </div>
 
-                  {/* TEXT */}
                   <h3 className="mt-4 font-bold text-lg text-gray-900 dark:text-white">
                     {movie.title}
                   </h3>
@@ -154,22 +146,14 @@ export default function MoviesSection() {
         {/* BUTTONS */}
         <Button
           onClick={scrollPrev}
-          className="
-            absolute left-2 top-1/2 -translate-y-1/2
-            bg-white/90 dark:bg-white/10
-            backdrop-blur-md
-          "
+          className="absolute left-2 top-1/2 -translate-y-1/2"
         >
           <ChevronLeft />
         </Button>
 
         <Button
           onClick={scrollNext}
-          className="
-            absolute right-2 top-1/2 -translate-y-1/2
-            bg-white/90 dark:bg-white/10
-            backdrop-blur-md
-          "
+          className="absolute right-2 top-1/2 -translate-y-1/2"
         >
           <ChevronRight />
         </Button>
